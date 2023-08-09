@@ -59,7 +59,7 @@ impl Notifications {
             .title(args.name.clone())
             .text("Starting cycle - back to work".to_string())
             .border_color("#ff0000".to_string())
-            .border_width(3.to_string())
+            .border_width(3)
             .position("top_middle".to_string())
             .build();
 
@@ -71,7 +71,7 @@ impl Notifications {
             .title(args.name.clone())
             .text("Take a short break".to_string())
             .border_color("#0000ff".to_string())
-            .border_width(3.to_string())
+            .border_width(3)
             .position("top_middle".to_string())
             .build();
 
@@ -83,7 +83,7 @@ impl Notifications {
             .title(args.name.clone())
             .text("Take a long break".to_string())
             .border_color("#0000ff".to_string())
-            .border_width(3.to_string())
+            .border_width(3)
             .position("top_middle".to_string())
             .build();
 
@@ -95,7 +95,7 @@ impl Notifications {
             .title(args.name.clone())
             .text("Work ended".to_string())
             .border_color("#00ff00".to_string())
-            .border_width(3.to_string())
+            .border_width(3)
             .position("top_middle".to_string())
             .build();
 

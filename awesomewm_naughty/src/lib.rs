@@ -9,79 +9,69 @@ impl Notification {
         Notification { notification: HashMap::new() }    
     }
 
-    pub fn ignore_suspend(mut self, ignore_suspend: String) -> Notification {
-        self.notification.insert("ignore_suspend".to_string(), ignore_suspend);
+    fn add_to_notification(mut self, key: &str, value: String) -> Notification {
+        self.notification.insert(key.to_string(), value);
         self
     }
 
-    pub fn border_color(mut self, border_color: String) -> Notification {
-        self.notification.insert("border_color".to_string(), process_string(border_color));
-        self
+    pub fn ignore_suspend(self, ignore_suspend: bool) -> Notification {
+        self.add_to_notification("ignore_suspend", ignore_suspend.to_string())
     }
 
-    pub fn border_width(mut self, border_width: String) -> Notification {
-        self.notification.insert("border_width".to_string(), process_string(border_width));
-        self
+    pub fn border_color(self, border_color: String) -> Notification {
+        self.add_to_notification("border_color", process_string(border_color))
     }
 
-    pub fn bg(mut self, bg: String) -> Notification {
-        self.notification.insert("bg".to_string(), process_string(bg));
-        self
+    pub fn border_width(self, border_width: usize) -> Notification {
+        self.add_to_notification("border_width", border_width.to_string())
     }
 
-    pub fn fg(mut self, fg: String) -> Notification {
-        self.notification.insert("fg".to_string(), process_string(fg));
-        self
+    pub fn bg(self, bg: String) -> Notification {
+        self.add_to_notification("bg", process_string(bg))
     }
 
-    pub fn font(mut self, font: String) -> Notification {
-        self.notification.insert("font".to_string(), process_string(font));
-        self
+    pub fn fg(self, fg: String) -> Notification {
+        self.add_to_notification("fg", process_string(fg))
     }
 
-    pub fn width(mut self, width: String) -> Notification {
-        self.notification.insert("width".to_string(), width);
-        self
+    pub fn font(self, font: String) -> Notification {
+        self.add_to_notification("font", process_string(font))
     }
 
-    pub fn height(mut self, height: String) -> Notification {
-        self.notification.insert("height".to_string(), height);
-        self
+    pub fn width(self, width: usize) -> Notification {
+        self.add_to_notification("width", width.to_string())
     }
 
-    pub fn ontop(mut self, ontop: String) -> Notification {
-        self.notification.insert("ontop".to_string(), ontop);
-        self
+    pub fn height(self, height: usize) -> Notification {
+        self.add_to_notification("height", height.to_string())
     }
 
-    pub fn text(mut self, text: String) -> Notification {
-        self.notification.insert("text".to_string(), process_string(text));
-        self
+    pub fn ontop(self, ontop: bool) -> Notification {
+        self.add_to_notification("ontop", ontop.to_string())
     }
 
-    pub fn title(mut self, title: String) -> Notification {
-        self.notification.insert("title".to_string(), process_string(title));
-        self
+    pub fn text(self, text: String) -> Notification {
+        self.add_to_notification("text", process_string(text))
     }
 
-    pub fn timeout(mut self, timeout: String) -> Notification {
-        self.notification.insert("timeout".to_string(), timeout);
-        self
+    pub fn title(self, title: String) -> Notification {
+        self.add_to_notification("title", process_string(title))
     }
 
-    pub fn hover_timeout(mut self, hover_timeout: String) -> Notification {
-        self.notification.insert("hover_timeout".to_string(), hover_timeout);
-        self
+    pub fn timeout(self, timeout: usize) -> Notification {
+        self.add_to_notification("timeout", timeout.to_string())
     }
 
-    pub fn screen(mut self, screen: String) -> Notification {
-        self.notification.insert("screen".to_string(), screen);
-        self
+    pub fn hover_timeout(self, hover_timeout: usize) -> Notification {
+        self.add_to_notification("hover_timeout", hover_timeout.to_string())
     }
 
-    pub fn position(mut self, position: String) -> Notification {
-        self.notification.insert("position".to_string(), process_string(position));
-        self
+    pub fn screen(self, screen: usize) -> Notification {
+        self.add_to_notification("screen", screen.to_string())
+    }
+
+    pub fn position(self, position: String) -> Notification {
+        self.add_to_notification("position", process_string(position))
     }
 
     pub fn build(self) -> String {
@@ -106,10 +96,3 @@ pub fn send(notification_string: String) -> Result<(), std::io::Error> {
     Ok(())
 }
 
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn test_build() {
-        
-    }
-}
